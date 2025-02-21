@@ -1,0 +1,36 @@
+# Ignore the virtual environment
+venv/
+*.venv
+env/
+.env/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Django migrations (optional, you may want to include them)
+*/migrations/*
+
+# Ignore database files (if you’re using SQLite)
+db.sqlite3
+
+# Ignore static files (if you want to regenerate them each time)
+static/
+
+# Ignore media files (if you store user-uploaded files locally)
+media/
+
+# Ignore .env files containing secret settings (like database credentials, API keys, etc.)
+.env
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+
+# Ignore OS-specific files
+.DS_Store   # MacOS
+Thumbs.db   # Windows
+
+# Ignore log files
+*.log

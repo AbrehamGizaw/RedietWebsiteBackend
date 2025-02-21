@@ -25,31 +25,17 @@ class CompanyInfoList(APIView):
 #                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CompanyInfoDetail(APIView):
-     def get_by_pk(self, pk):
-          try:
-               return CompanyInfo.objects.get(pk=pk)
-          except:
-               return Response({
-                    'error':'There is no such companyinfo'
-               }, status=status.HTTP_404_NOT_FOUND )
-    
      def get(self, request, pk):
-          companyinfo = self.get_by_pk(pk)
+          try:
+               companyinfo = CompanyInfo.objects.get(pk=pk)
+          except CompanyInfo.DoesNotExist:
+               return Response({
+                    'error':'The company has no information for now'
+               }, status=status.HTTP_404_NOT_FOUND)
+          
           serializer = CompanyInfoSerializer(companyinfo)
           return Response(serializer.data)
      
-     def put(self, request, pk):
-          companyinfo = self.get_by_pk(pk)
-          serializer = CompanyInfoSerializer(companyinfo, data=request.data)
-          if serializer.is_valid():
-               serializer.save()
-               return Response(serializer.data)
-          return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
-     
-     def delete(self, request, pk):
-          companyinfo = self.get_by_pk(pk)
-          companyinfo.delete()
-          return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class WhyUsList(APIView):

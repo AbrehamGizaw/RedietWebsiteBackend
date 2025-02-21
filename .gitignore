@@ -17,7 +17,7 @@ db.sqlite3
 
 # Ignore static files (if you want to regenerate them each time)
 static/
-
+staticfiles/
 # Ignore media files (if you store user-uploaded files locally)
 media/
 

@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c4g0=mwilb$0q&%qcy7(dj^3d_s7i%_*sh&h)i1)byrh2w&bba'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [ 'localhost','127.0.0.1', 'rediet.debolx.com', '0.0.0.0']
 
@@ -76,23 +76,24 @@ WSGI_APPLICATION = 'Consultancy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'debolxcom_consultancy',
+#         'USER': 'debolxcom_abraham',
+#         'PASSWORD': 'Abraham@1127',
+#         'HOST': 'localhost', 
+#         'PORT': '5432',  
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '1127',
-        'HOST': 'localhost',  # Set to 'localhost' if running locally
-        'PORT': '5432',  # Default PostgreSQL port
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
